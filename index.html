@@ -2,128 +2,142 @@
 <html lang="">
 
 <head>
-	<meta name="baidu-site-verification" content="code-Bc5OVgEWev" />
+    <meta name="baidu-site-verification" content="code-Bc5OVgEWev" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>chenshan</title>
     <meta name="description" content="好东西">
     <meta name="keywords" content="秘密网站，好东西">
-	<meta http-equiv="Content-Type" content="text/html，charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html，charset=UTF-8" />
     <link rel="icon" type="image/ico" href="images/01.ico">
+    <!-- 样式文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+    <link rel="stylesheet" href="./static/style.css?v=1.2.0">
+    <link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
 
 </head>
 <style>
-div#bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -10;
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  zoom: 1;
- 
-  opacity:1;
-  transition: opacity 1s linear;
-  -moz-transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-}
+    body {
+        /*背景图片URL 可使用随机图片API */
+        background-image: url("https://i.loli.net/2020/09/14/v4Si8BIupOVcwm6.jpg");
+    }
+
+    .photo-bg {
+        /* 卡片左侧图片 */
+        background-image: url("https://bu.dusays.com/2022/06/04/629b0a2750921.jpg");
+    }
 </style>
+<!-- https://music.163.com/playlist?id=774841613&userid=514850924 -->
+<script>
+    // 音乐设置
+    let meting_music_api = "https://api.mizore.cn/meting/api.php";// meting api
+    let music_server = "netease"; // 音乐服务：网易云 netease 参见 meting api支持的服务
+    let music_type = "playlist"; // 歌曲类型：歌单playlist 单首歌曲 song  专辑 album
+    let music_id = "774841613"; // 歌单ID或歌曲ID或者专辑ID 20173709 29732992
+    let music_order = "random"; // 音频循环顺序, 顺序播放： 'list', 随机播放：'random'
+    let music_mini = false; // mini模式 吸底模式开启后此选项实效 true / false
+    let music_fixed = false; // 吸底模式
+    let music_volume = 0.7; // 默认音量
+    let music_autoplay = true; // 自动播放
+    let music_loop = "all"; // 音频循环播放, 可选值: 'all', 'one', 'none' ，分别为全部循环，单曲循环，不循环
+</script>
+
 <body>
+    <!-- <div class="kz-video">
+        <video src="./static/video/lty.mp4" autoplay="autoplay" loop muted playsinline="" webkit-playsinline=""></video>
+    </div> -->
     <div id="main" class="container">
         <div class="row my-card justify-content-center">
             <div class="col-lg-4 photo-bg"></div>
             <div class="col-lg-8 card">
                 <h1>Hi，我是chenshan，这里是我的主页！</h1>
-               <a href="v2/index.html">→Come Baby←</a>
-				<p>很荣幸您能访问我的网站！ 目前我仍在学习中，每天抽出时间来看书学习，励志成为一个技术很牛的程序员。</p>
+                <a href="v2/index.html">→Come Baby←</a>
+                <p>很荣幸您能访问我的网站！ 目前我仍在学习中，每天抽出时间来看书学习，励志成为一个技术很牛的程序员。</p>
                 <p>
                     我很喜欢的一句话：<br>If the moon smiled, she would resemble you.<br> 如果月亮会笑，那么她一定像你一样美！
 
                 </p>
 
                 <p>Catch me:</p>
-               
+
 
 
                 <h4 class="mt-4">or, keep your eyes on</h4>
-			
+                <!-- aplayer inner -->
+                <div id="aplayer-inner" class="aplayer"></div>
+                <!-- end aplayer inner -->
                 <footer>
-                    <p> <br><br>Mod by<a href="#" target="_blank" rel="">&nbsp;chenshan</a><br>Copyright 2021 - Now <a href="#" target="_blank">chenshan326.top</a> ICP证号:<a href="http://beian.miit.gov.cn/" target="_blank">豫ICP备2021006474号-1</a>
-                       
-                     </p>
+                    <p> <br><br>Mod by<a href="#" target="_blank" rel="">&nbsp;chenshan</a><br>Copyright 2021 - Now <a
+                            href="#" target="_blank">chenshan326.top</a> ICP证号:<a href="http://beian.miit.gov.cn/"
+                            target="_blank">豫ICP备2021006474号-1</a>
+
+                    </p>
 
                 </footer>
             </div>
         </div>
 
     </div>
-    <div id="aplayer" class="aplayer" data-order="random" data-id="20173709" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-volume="0.8"></div>
+
     <!-- aplayer -->
-
-
-
+    <div id="aplayer-fixed" class="aplayer"></div>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+    <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
+    <script src="./static/Meting.min.js"></script>
     <!-- end_aplayer -->
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kaygb/kaygb@master/layer/layer.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kaygb/kaygb@master/js/v3.js"></script>
+    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
+    <script src="./static/main.js"></script>
     <script>
+
+        // TODO 一言设置
         //弹出一个页面层
-//    $('#kaygb-blog').on('click', function() {
-//            layer.open({
-//                type: 2,
-//                title: '陈柒柒',
-//                shadeClose: true,
-//                shade: false,
-//                maxmin: true, //开启最大化最小化按钮
-//                area: ['80%', '100%'],
-//                content: '//eas1.cn/'
-//            });
-//        });
-//        $('#kaygb-mail').on('click', function() {
-//            layer.open({
-//                type: 2,
-//                title: '陈柒柒',
-//                shadeClose: true,
-//                shade: false,
-//                maxmin: true, //开启最大化最小化按钮
-//                area: ['80%', '100%'],
-//                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fengye@170601.xyz'
-//            });
-//        }); 
-// 定义图片路径 {num} 为 可变的图片序号
-var bgImgUrl = 'http://api.asilu.com/cdn/img/bg/{num}.jpg', bgNum,
-    bgImgArr = [],
-    bgDiv = document.getElementById("bg");
-// 组合数组 此处 200 为 图开始序号 结束 210
-for (var i=200; i <= 210; i++){
-    bgImgArr.push(bgImgUrl.replace('{num}', i));
-}
-setBGimg();
-function setBGimg(d){
-    if(!bgNum || bgNum >= bgImgArr.length) bgNum = 0;
-    bgDiv.style.opacity = .001;
-    setTimeout(function(){
-        bgDiv.style.backgroundImage = 'url('+ bgImgArr[bgNum] +')';
-        bgNum++;
-        bgDiv.style.opacity = 1;
-    }, 1000);
-    if(typeof d == 'undefined')
-    setInterval(function(){setBGimg(true);}, 3000);
-    // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
-}
-    </script></body></html>
+        //    $('#kaygb-blog').on('click', function() {
+        //            layer.open({
+        //                type: 2,
+        //                title: '陈柒柒',
+        //                shadeClose: true,
+        //                shade: false,
+        //                maxmin: true, //开启最大化最小化按钮
+        //                area: ['80%', '100%'],
+        //                content: '//eas1.cn/'
+        //            });
+        //        });
+        //        $('#kaygb-mail').on('click', function() {
+        //            layer.open({
+        //                type: 2,
+        //                title: '陈柒柒',
+        //                shadeClose: true,
+        //                shade: false,
+        //                maxmin: true, //开启最大化最小化按钮
+        //                area: ['80%', '100%'],
+        //                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fengye@170601.xyz'
+        //            });
+        //        }); 
+        // 定义图片路径 {num} 为 可变的图片序号
+        var bgImgUrl = 'http://api.asilu.com/cdn/img/bg/{num}.jpg', bgNum,
+            bgImgArr = [],
+            bgDiv = document.getElementById("bg");
+        // 组合数组 此处 200 为 图开始序号 结束 210
+        for (var i = 200; i <= 210; i++) {
+            bgImgArr.push(bgImgUrl.replace('{num}', i));
+        }
+        setBGimg();
+        function setBGimg(d) {
+            if (!bgNum || bgNum >= bgImgArr.length) bgNum = 0;
+            bgDiv.style.opacity = .001;
+            setTimeout(function () {
+                bgDiv.style.backgroundImage = 'url(' + bgImgArr[bgNum] + ')';
+                bgNum++;
+                bgDiv.style.opacity = 1;
+            }, 1000);
+            if (typeof d == 'undefined')
+                setInterval(function () { setBGimg(true); }, 3000);
+            // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
+        }
+    </script>
+</body>
+
+</html>
