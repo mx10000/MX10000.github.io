@@ -50,7 +50,7 @@
     </div> -->
     <div id="main" class="container">
         <div class="row my-card justify-content-center">
-            <div class="col-lg-4 photo-bg" id="bg"></div>
+            <div class="col-lg-4 photo-bg"></div>
             <div class="col-lg-8 card">
                 <h1>Hi，我是chenshan，这里是我的主页！</h1>
                 <a href="v2/index.html">→Come Baby←</a>
@@ -118,26 +118,26 @@
         //            });
         //        }); 
         // 定义图片路径 {num} 为 可变的图片序号
-        var bgImgUrl = 'http://api.asilu.com/cdn/img/bg/{num}.jpg', bgNum,
-            bgImgArr = [],
-            bgDiv = document.getElementById("bg");
-        // 组合数组 此处 200 为 图开始序号 结束 210
-        for (var i = 200; i <= 210; i++) {
-            bgImgArr.push(bgImgUrl.replace('{num}', i));
-        }
-        setBGimg();
-        function setBGimg(d) {
-            if (!bgNum || bgNum >= bgImgArr.length) bgNum = 0;
-            bgDiv.style.opacity = .001;
-            setTimeout(function () {
-                bgDiv.style.backgroundImage = 'url(' + bgImgArr[bgNum] + ')';
-                bgNum++;
-                bgDiv.style.opacity = 1;
-            }, 1000);
-            if (typeof d == 'undefined')
-                setInterval(function () { setBGimg(true); }, 3000);
+        // var bgImgUrl = 'http://api.asilu.com/cdn/img/bg/{num}.jpg', bgNum,
+        //     bgImgArr = [],
+        //     bgDiv = document.getElementById("bg");
+        // // 组合数组 此处 200 为 图开始序号 结束 210
+        // for (var i = 200; i <= 210; i++) {
+        //     bgImgArr.push(bgImgUrl.replace('{num}', i));
+        // }
+        // setBGimg();
+        // function setBGimg(d) {
+        //     if (!bgNum || bgNum >= bgImgArr.length) bgNum = 0;
+        //     bgDiv.style.opacity = .001;
+        //     setTimeout(function () {
+        //         bgDiv.style.backgroundImage = 'url(' + bgImgArr[bgNum] + ')';
+        //         bgNum++;
+        //         bgDiv.style.opacity = 1;
+        //     }, 1000);
+        //     if (typeof d == 'undefined')
+        //         setInterval(function () { setBGimg(true); }, 3000);
             // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
-        }
+        // }
     </script>
 </body>
 
