@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="">
+<html>
 
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <meta name="baidu-site-verification" content="code-Bc5OVgEWev" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -138,40 +138,38 @@
             // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
         // }
     </script>
-   <script>
-    let ipMap = new Map();  
-    let counter;
-    
-    function getIP() {
-      if (window.XMLHttpRequest) {   
-        var ip = new XMLHttpRequest();
-      } else {
-        var ip = new ActiveXObject("Microsoft.XMLHTTP");
-      }
-      
-      ip.open("GET", "http://ip.chinaz.com/getip.aspx", true);
-      ip.send();
-      ip.onreadystatechange = function() {   
-        if (ip.readyState == 4 && ip.status == 200) {   
-          ip = ip.responseText;  
-          if (ipMap.has(ip)) {   
-            ipMap.set(ip, ipMap.get(ip) + 1);  
-          } else {
-            ipMap.set(ip, 1);  
-          } 
+
+    <script>
+        let ipMap = new Map();
+        let counter;
+
+        function getIP() {
+            var ip = new XMLHttpRequest();
+            ip.open("GET", "https://api.ipify.org?format=json", true);
+            ip.send();
+            ip.onreadystatechange = function () {
+                if (ip.readyState != 4 || ip.status != 200) {
+                    return;
+                }
+                let ipData = JSON.parse(ip.responseText);
+                let ip = ipData.ip;
+                if (ipMap.has(ip)) {
+                    ipMap.set(ip, ipMap.get(ip) + 1);
+                } else {
+                    ipMap.set(ip, 1);
+                }
+            };
         }
-      };  
-    }
-    
-    function countIP() {
-      getIP();
-      let sum = 0;
-      ipMap.forEach(count => sum += count);
-      counter = sum;
-      document.getElementById("counter").innerHTML = counter;    
-    }  
-    
-    setInterval(countIP, 1000);   
+
+        function countIP() {
+            getIP();
+            let sum = 0;
+            ipMap.forEach(count => sum += count);
+            counter = sum;
+            document.getElementById("counter").innerHTML = counter;
+        }
+
+        setInterval(countIP, 1000);    
     </script>
 </body>
 
