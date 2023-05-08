@@ -58,7 +58,7 @@ $.ajax({
   data:{
     server: music_server,
     type: music_type,
-    id: music_id
+    uuid: music_id
   },
   dataType: "json",
   success: function (audio) {
