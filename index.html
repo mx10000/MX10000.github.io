@@ -137,28 +137,36 @@
             // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
         // }
     </script>
-    <script>
-        let ipSet = new Set();
-        let counter = 0;
-
-        function getIP() {
-            if (ipSet.has(ip)) {
-                return;
+   <script>
+    let ipSet = new Set(); 
+    let counter = 0;
+    
+    function getIP() {
+      ip.onreadystatechange = (function() { 
+        var ip;  
+        return function() {
+          if (ip.readyState == 4 && ip.status == 200) { 
+            ip = ip.responseText;  
+            if (ipSet.has(ip)) {  
+              return;
             } else {
-                ipSet.add(ip);
+              ipSet.add(ip);  
             }
+          }
         }
-
-        function countIP() {
-            getIP();
-            counter = ipSet.size;
-            document.getElementById("counter").innerHTML = counter;
-        }
-
-        window.onload = function () {
-            countIP();
-            setInterval(countIP, 1000);
-        }
+      })(); 
+    }  
+    
+    function countIP() {
+      getIP();
+      counter = ipSet.size;   
+      document.getElementById("counter").innerHTML = counter;   
+    }
+    
+    window.onload = function() {
+      countIP();
+      setInterval(countIP, 1000);    
+    }
     </script>
 </body>
 
