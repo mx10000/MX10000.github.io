@@ -66,7 +66,7 @@
                 <div id="aplayer-inner" class="aplayer"></div>
                 <!-- end aplayer inner -->
                 <footer>
-                    <p> <br><br>Mod by<a href="#" target="_blank" rel="">&nbsp;chenshan</a><br>Copyright 2023 - Now 
+                    <p> <br><br>Mod by<a href="#" target="_blank" rel="">&nbsp;chenshan</a><br>Copyright 2023 - Now
                         <!-- <a
                             href="#" target="_blank">chenshan326.top</a> ICP证号:<a href="http://beian.miit.gov.cn/"
                             target="_blank">豫ICP备2021006474号-1</a> -->
@@ -76,7 +76,7 @@
                 </footer>
             </div>
         </div>
-
+        <div id="counter">0</div>
     </div>
 
     <!-- aplayer -->
@@ -114,7 +114,7 @@
         //                area: ['80%', '100%'],
         //                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fengye@170601.xyz'
         //            });
-        //        }); 
+        //        });
         // 定义图片路径 {num} 为 可变的图片序号
         // var bgImgUrl = 'http://api.asilu.com/cdn/img/bg/{num}.jpg', bgNum,
         //     bgImgArr = [],
@@ -136,6 +136,29 @@
         //         setInterval(function () { setBGimg(true); }, 3000);
             // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
         // }
+    </script>
+    <script>
+        let ipSet = new Set();
+        let counter = 0;
+
+        function getIP() {
+            if (ipSet.has(ip)) {
+                return;
+            } else {
+                ipSet.add(ip);
+            }
+        }
+
+        function countIP() {
+            getIP();
+            counter = ipSet.size;
+            document.getElementById("counter").innerHTML = counter;
+        }
+
+        window.onload = function () {
+            countIP();
+            setInterval(countIP, 1000);
+        }
     </script>
 </body>
 
